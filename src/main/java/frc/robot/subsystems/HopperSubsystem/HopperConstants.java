@@ -6,16 +6,18 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.MotorAlignmentValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import frc.robot.Constants;
+
 public class HopperConstants {
 
-    public static final TalonFX mBedFx = new TalonFX(0);
-    public static final TalonFX mSideSweeperBottomFx =  new TalonFX(0);
+    public static final TalonFX mBedFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
+    public static final TalonFX mSideSweeperBottomFx =  new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
 
     // not added yet;
-    public static final TalonFX mBedFollowerFx = new TalonFX(0);
-    public static final TalonFX mTurretTransferFx = new TalonFX(0);
-    public static final TalonFX mCornerSweeperFx = new TalonFX(0);
-    public static final TalonFX mSideSweeperTopFx = new TalonFX(0);
+    public static final TalonFX mBedFollowerFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
+    public static final TalonFX mTurretTransferFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
+    public static final TalonFX mCornerSweeperFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
+    public static final TalonFX mSideSweeperTopFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
 
     private HopperConstants() {
         configureHopperMotor();

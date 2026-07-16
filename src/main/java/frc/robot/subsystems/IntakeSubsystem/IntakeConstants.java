@@ -15,25 +15,25 @@ import frc.robot.Constants;
 
 public class IntakeConstants {
     
-    public static final TalonFX mArmFx = new TalonFX(0);
-    public static final TalonFX mIntakeWheelFx = new TalonFX(0);
-    public static final TalonFX mIntakeWheelFollowerFx = new TalonFX(0);
+    public static final TalonFX mArmFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
+    public static final TalonFX mIntakeWheelFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
+    public static final TalonFX mIntakeWheelFollowerFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
 
-    public static LoggedNetworkNumber logIntakeMMKS = new LoggedNetworkNumber("/Tuning/Intake/Angle/kS", 0);
-    public static LoggedNetworkNumber logIntakeMMKV = new LoggedNetworkNumber("/Tuning/Intake/Angle/kV", 0);
-    public static LoggedNetworkNumber logIntakeMMKA = new LoggedNetworkNumber("/Tuning/Intake/Angle/kA", 0);
-    public static LoggedNetworkNumber logIntakeMMKP = new LoggedNetworkNumber("/Tuning/Intake/Angle/kP", 0);
-    public static LoggedNetworkNumber logIntakeMMKI = new LoggedNetworkNumber("/Tuning/Intake/Angle/kI", 0);
-    public static LoggedNetworkNumber logIntakeMMKD = new LoggedNetworkNumber("/Tuning/Intake/Angle/kD", 0);
-    public static LoggedNetworkNumber logIntakeMMKG = new LoggedNetworkNumber("/Tuning/Intake/Angle/kG", 0);
+    public static LoggedNetworkNumber logIntakeMMKS = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/kS", 0);
+    public static LoggedNetworkNumber logIntakeMMKV = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/kV", 0);
+    public static LoggedNetworkNumber logIntakeMMKA = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/kA", 0);
+    public static LoggedNetworkNumber logIntakeMMKP = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/kP", 0);
+    public static LoggedNetworkNumber logIntakeMMKI = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/kI", 0);
+    public static LoggedNetworkNumber logIntakeMMKD = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/kD", 0);
+    public static LoggedNetworkNumber logIntakeMMKG = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/kG", 0);
 
-    public static LoggedNetworkNumber logIntakeMMVeloc = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/Velocity", 0);
-    public static LoggedNetworkNumber logIntakeMMAccel = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/Acceleration", 0);
+    public static LoggedNetworkNumber logIntakeMMVeloc = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/Velocity", 0);
+    public static LoggedNetworkNumber logIntakeMMAccel = new LoggedNetworkNumber("Rebuilt/Intake/Tuning/MM/Acceleration", 0);
   
     public static DynamicMotionMagicVoltage  IntakeArmMMRequest=  new DynamicMotionMagicVoltage(0, logIntakeMMVeloc.getAsDouble(), logIntakeMMAccel.getAsDouble()).withEnableFOC(Constants.ENABLEFOC);;
     public static VoltageOut IntakeWheelMMRequest = new VoltageOut(0).withEnableFOC(Constants.ENABLEFOC);
 
-    public static TalonFXConfiguration motorConfig;
+    public static TalonFXConfiguration motorConfig = new TalonFXConfiguration();;
 
     private IntakeConstants () {
         configureArmMotor();
@@ -41,7 +41,6 @@ public class IntakeConstants {
     }
 
     private void configureWheelMotor() {
-        TalonFXConfiguration motorConfig = new TalonFXConfiguration();
 
         motorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
 
@@ -59,7 +58,7 @@ public class IntakeConstants {
     public static void configureArmMotor() {
         TalonFXConfiguration motorConfig = new TalonFXConfiguration();
 
-        motorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
+        motorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
         // motorConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
 
         motorConfig.MotionMagic.MotionMagicAcceleration = logIntakeMMAccel.get();
