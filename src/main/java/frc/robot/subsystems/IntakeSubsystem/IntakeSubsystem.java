@@ -1,5 +1,4 @@
 package frc.robot.subsystems.IntakeSubsystem;
-
 import org.littletonrobotics.junction.Logger;
 import org.littletonrobotics.junction.networktables.LoggedNetworkNumber;
 
