@@ -26,80 +26,81 @@ public class ShooterConstants extends SubsystemBase {
     public static TalonFX mHoodFx = new TalonFX(0, Constants.MAIN_SYSTEMS_CANBUS);
 
 
-    public static LoggedNetworkNumber logShooterMMKS = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kS", 0);
-    public static LoggedNetworkNumber logShooterMMKV = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kV", 0);
-    public static LoggedNetworkNumber logShooterMMKA = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kA", 0);
-    public static LoggedNetworkNumber logShooterMMKP = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kP", 0);
-    public static LoggedNetworkNumber logShooterMMKI = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kI", 0);
-    public static LoggedNetworkNumber logShooterMMKD = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kD", 0);
-    public static LoggedNetworkNumber logShooterMMKG = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kG", 0);
+    public static LoggedNetworkNumber logHoodMMKS = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kS", 0);
+    public static LoggedNetworkNumber logHoodMMKV = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kV", 0);
+    public static LoggedNetworkNumber logHoodMMKA = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kA", 0);
+    public static LoggedNetworkNumber logHoodMMKP = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kP", 0);
+    public static LoggedNetworkNumber logHoodMMKI = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kI", 0);
+    public static LoggedNetworkNumber logHoodMMKD = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kD", 0);
+    public static LoggedNetworkNumber logHoodMMKG = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/kG", 0);
 
-    public static LoggedNetworkNumber logShooterMMVeloc = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/Velocity", 0);
-    public static LoggedNetworkNumber logShooterMMAccel = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/Acceleration", 0);
+    public static LoggedNetworkNumber logHoodMMVeloc = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/Velocity", 0);
+    public static LoggedNetworkNumber logHoodMMAccel = new LoggedNetworkNumber("Rebuilt/Shooter/Tuning/MM/Acceleration", 0);
 
-    public static LoggedNetworkNumber logHoodVelocMMKS = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/kS", 0);
-    public static LoggedNetworkNumber logHoodVelocMMKV = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/kV", 0);
-    public static LoggedNetworkNumber logHoodVelocMMKA = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/kA", 0);
-    public static LoggedNetworkNumber logHoodVelocMMKP = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/kP", 0);
+    public static LoggedNetworkNumber logShooterVelocMMKS = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/kS", 0);
+    public static LoggedNetworkNumber logShooterVelocMMKV = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/kV", 0);
+    public static LoggedNetworkNumber logShooterVelocMMKA = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/kA", 0);
+    public static LoggedNetworkNumber logShooterVelocMMKP = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/kP", 0);
 
-    public static LoggedNetworkNumber logHoodVelocMMAccel = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/Acceleration", 0);
+    public static LoggedNetworkNumber logShooterVelocMMAccel = new LoggedNetworkNumber("Rebuilt/Hood/Tuning/VelocMM/Acceleration", 0);
 
     public static TalonFXConfiguration shooterMotorConfig = new TalonFXConfiguration();
     public static TalonFXConfiguration hoodMotorConfig = new TalonFXConfiguration();
 
     private ShooterConstants () {
-        configureHoodMotors();
         configureShooterMotors();
+        configureHoodMotors();
     }
 
-    public void configureShooterMotors() {
+    public void configureHoodMotors() {
 
-        shooterMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
-        shooterMotorConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+        hoodMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+        hoodMotorConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
         
-        shooterMotorConfig.CurrentLimits.StatorCurrentLimitEnable = true;
-        shooterMotorConfig.CurrentLimits.StatorCurrentLimit = 40;
-        shooterMotorConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
-        shooterMotorConfig.CurrentLimits.SupplyCurrentLimit = 20;
+        hoodMotorConfig.CurrentLimits.StatorCurrentLimitEnable = true;
+        hoodMotorConfig.CurrentLimits.StatorCurrentLimit = 40;
+        hoodMotorConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+        hoodMotorConfig.CurrentLimits.SupplyCurrentLimit = 20;
 
-        Slot0Configs slot0Config = new Slot0Configs().withKS(logShooterMMKS.get())
-                                                    .withKV(logShooterMMKV.get())
-                                                    .withKA(logShooterMMKA.get())
-                                                    .withKP(logShooterMMKP.get())
-                                                    .withKI(logShooterMMKI.get())
-                                                    .withKD(logShooterMMKD.get())
-                                                    .withKG(logShooterMMKG.get());
+        Slot0Configs slot0Config = new Slot0Configs().withKS(logHoodMMKS.get())
+                                                    .withKV(logHoodMMKV.get())
+                                                    .withKA(logHoodMMKA.get())
+                                                    .withKP(logHoodMMKP.get())
+                                                    .withKI(logHoodMMKI.get())
+                                                    .withKD(logHoodMMKD.get())
+                                                    .withKG(logHoodMMKG.get());
         shooterMotorConfig.Slot0 = slot0Config;
 
-        MotionMagicConfigs mmConfigs = new MotionMagicConfigs().withMotionMagicAcceleration(logShooterMMAccel.get())
-                                                               .withMotionMagicCruiseVelocity(logShooterMMVeloc.get());
+        MotionMagicConfigs mmConfigs = new MotionMagicConfigs().withMotionMagicAcceleration(logHoodMMAccel.get())
+                                                               .withMotionMagicCruiseVelocity(logHoodMMVeloc.get());
         shooterMotorConfig.MotionMagic = mmConfigs;
-
+        
+        mHoodFx.getConfigurator().apply(hoodMotorConfig);
     }
 
 
-   private void configureHoodMotors() {
-        hoodMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
-        hoodMotorConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
+   private void configureShooterMotors() {
+        shooterMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Coast;
+        shooterMotorConfig.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
 
-        hoodMotorConfig.CurrentLimits.StatorCurrentLimitEnable = true;
-        hoodMotorConfig.CurrentLimits.StatorCurrentLimit = 80;
-        hoodMotorConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
-        hoodMotorConfig.CurrentLimits.SupplyCurrentLowerTime = 3;
-        hoodMotorConfig.CurrentLimits.SupplyCurrentLimit = 40;
-        hoodMotorConfig.CurrentLimits.SupplyCurrentLowerLimit = 25;
+        shooterMotorConfig.CurrentLimits.StatorCurrentLimitEnable = true;
+        shooterMotorConfig.CurrentLimits.StatorCurrentLimit = 80;
+        shooterMotorConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
+        shooterMotorConfig.CurrentLimits.SupplyCurrentLowerTime = 3;
+        shooterMotorConfig.CurrentLimits.SupplyCurrentLimit = 40;
+        shooterMotorConfig.CurrentLimits.SupplyCurrentLowerLimit = 25;
 
 
-        Slot0Configs slot0Config = new Slot0Configs().withKS(logHoodVelocMMKS.get())
-                                                    .withKV(logHoodVelocMMKV.get())
-                                                    .withKA(logHoodVelocMMKA.get())
-                                                    .withKP(logHoodVelocMMKP.get());
+        Slot0Configs slot0Config = new Slot0Configs().withKS(logShooterVelocMMKS.get())
+                                                    .withKV(logShooterVelocMMKV.get())
+                                                    .withKA(logShooterVelocMMKA.get())
+                                                    .withKP(logShooterVelocMMKP.get());
 
-        hoodMotorConfig.Slot0 = slot0Config;
+        shooterMotorConfig.Slot0 = slot0Config;
 
-        hoodMotorConfig.MotionMagic.MotionMagicAcceleration = logHoodVelocMMAccel.get();
+        shooterMotorConfig.MotionMagic.MotionMagicAcceleration = logShooterVelocMMAccel.get();
 
-        mShooterFx.getConfigurator().apply(hoodMotorConfig);
+        mShooterFx.getConfigurator().apply(shooterMotorConfig);
         mShooterFollowerFx.setControl(new Follower(mShooterFx.getDeviceID(), MotorAlignmentValue.Opposed));
     }
 
